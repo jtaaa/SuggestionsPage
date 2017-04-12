@@ -1,3 +1,44 @@
-<h1>
-  {{title}}
-</h1>
+<div class="jumbotron text-center">
+  <h1>{{title}}</h1>
+  <p>Work in Progress!</p>
+</div>
+
+<div class="container">
+  <p>Insert your suggestions below!:</p>
+  <form name="suggestionForm">
+    <div class="form-group" [ngClass]="currentAuthorClasses">
+      <label for="author">Name:</label>
+      <input type="text" class="form-control" name="author" autofocus=""
+          [(ngModel)]="newSuggestion.author"
+          placeholder={{authorPlaceholder}}>
+      <span *ngIf="failedAuthor"
+          class="glyphicon glyphicon-remove form-control-feedback"></span>
+    </div>
+
+    <div class="form-group" [ngClass]="currentSuggestionClasses">
+      <label for="suggestion">Suggestion:</label>
+      <textarea class="form-control" rows="5" name="suggestion"
+          [(ngModel)]="newSuggestion.suggestion"
+          placeholder={{suggestionPlaceholder}}>
+      </textarea>
+      <span *ngIf="failedAuthor"
+          class="glyphicon glyphicon-remove form-control-feedback"></span>
+    </div>
+    <button type="submit" class="btn btn-default" (click)="addSuggestion()">
+      Submit
+    </button>
+  </form>
+</div>
+
+<div class="container" *ngIf="suggestions.length > 0">
+  <h2>Current Suggestions</h2>
+  <ul class="list-group">
+    <li *ngFor="let suggestion of suggestions"
+        class="list-group-item justify-content-between">
+      {{suggestion.suggestion}}
+      <i class="fa fa-remove fa-2x pull-right"
+          (click)="removeSuggestions(suggestion)"></i>
+      <span class="badge badge-default badge-pill">{{suggestion.id}}</span>
+    </li>
+  </ul>
+</div>

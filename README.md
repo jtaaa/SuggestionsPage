@@ -1,5 +1,7 @@
 # SuggestionsApp
 
+This is a small app that inputs user suggestions and displays them. I making it mainly for the purpose of learning to use angular-cli, bootstrap and firebase.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
