@@ -46,8 +46,10 @@ export class AppComponent {
   }
 
   addSuggestion() {
-    if (this.newSuggestion.author != null &&
-        this.newSuggestion.suggestion != null) {
+    if (this.newSuggestion.author != null 
+        && this.newSuggestion.author.length > 0
+        && this.newSuggestion.suggestion != null
+        && this.newSuggestion.suggestion.length > 0) {
       this.suggestionDataService.addSuggestion(this.newSuggestion);
       this.newSuggestion = new Suggestion();
       this.failedAuthor = false;
